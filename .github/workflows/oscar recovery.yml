@@ -1,4 +1,4 @@
-name: "[TWRP] Test build for Oscar"
+name: "[TWRP] Test build for OP515AL1"
 
 on:
   workflow_dispatch:
@@ -25,8 +25,8 @@ jobs:
             sudo -E apt-get install git-core gnupg flex bison build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 libncurses5 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils xsltproc unzip fontconfig >/dev/null 2>&1
             sudo -E curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo
             sudo -E chmod a+rx /usr/local/bin/repo
-            git config --global user.name "spector0"
-            git config --global user.email "www.ranjith007.ra@gmail.com"     
+            git config --global user.name "EduardoA3677"
+            git config --global user.email "ealvarado261500@gmail.com"     
              
        - name: "Sync & compile"
          run: |
@@ -41,8 +41,8 @@ jobs:
             cd bootable/recovery
             git fetch https://gerrit.twrp.me/android_bootable_recovery refs/changes/05/5405/26 && git cherry-pick FETCH_HEAD
             cd ~/twrp
-            git clone https://github.com/Spector0/Device_Oneplus_Oscar_TWRP --depth=1 -b Alpha_1 device/oneplus/oscar
-            . build/envsetup.sh && lunch twrp_oscar-eng && mka bootimage -j4
+            git clone https://github.com/EduardoA3677/OP515AL1-ALPHA --depth=1 -b android-12.1 device/oneplus/OP515AL1
+            . build/envsetup.sh && lunch twrp_OP515AL1-eng && mka bootimage -j4
       
        - uses: actions/upload-artifact@v2
          with:
